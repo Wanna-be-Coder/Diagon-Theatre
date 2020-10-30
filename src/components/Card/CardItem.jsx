@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
 
   avatar: {
     backgroundColor: red[500],
-    marginTop: 185,
     fontSize: '16px'
  
     
@@ -24,14 +23,16 @@ const useStyles = makeStyles(() => ({
 
 export default function CardItem({data}) {
   let classes = useStyles();
+
   const imageSelector = data.profile_path ? { backgroundImage: `url(http://image.tmdb.org/t/p/w220_and_h330_face/${data.profile_path})`} : { backgroundImage: `url(http://image.tmdb.org/t/p/w220_and_h330_face/${data.poster_path})`};
-  const ratingSelector = data.profile_path ? data.popularity.toString().substr(0,2) :  ` ${data.vote_average*10}﹪`;
+  const ratingSelector = data.profile_path ? `${data.popularity.toString().substr(0,2)}pt` :  ` ${data.vote_average*10}﹪`;
   return (
     <Card className="card-item" style={imageSelector}>
    
       <Avatar alt="rating" className={classes.avatar}>
         {ratingSelector}
       </Avatar>
+  
     </Card>
   );
 }

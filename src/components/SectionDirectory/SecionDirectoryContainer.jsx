@@ -28,8 +28,8 @@ const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
         </div>
     )
 }
-const mapStateToProps = ({topMedias}) =>({
-    topMedias:topMedias
+const mapStateToProps = ({media}) =>({
+    topMedias:media
   })
 
 export default connect(mapStateToProps,{getPopulars})(SecionDirectoryContainer);

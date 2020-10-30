@@ -3,5 +3,5 @@ import movieListReducer from './movie-list/movieListReducer';
 
 
 export default combineReducers({
-    topMedias:movieListReducer
+    media:movieListReducer
 })

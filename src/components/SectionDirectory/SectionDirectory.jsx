@@ -26,7 +26,7 @@ const SectionDirectory = ({title,list}) => {
         <div style={cardStyle.main}>
             <div style={cardStyle.title}>{title}</div>
             <div style={cardStyle.card}>
-            {list.map(list=> <CardItem  data={list}/>)}
+            {list.map(list=> <CardItem key={list.id}  data={list}/>)}
             </div>
             
         </div>
