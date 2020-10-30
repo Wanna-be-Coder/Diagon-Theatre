@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+import {connect} from 'react-redux';
+import {submitSearch} from '../../redux/media-list/mediaListAction'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +31,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchBar() {
+const SearchBar = ({submitSearch}) => {
   const classes = useStyles();
+  const [searchField,setSearchField] = useState("");
+
+
   const handleSearch = (e) =>{
       e.preventDefault();
-      console.log('submitted');
+      submitSearch(searchField);
   }
 
   return (
@@ -42,6 +47,8 @@ export default function SearchBar() {
         className={classes.input}
         placeholder="Search for a movie, tv show, person......"
         inputProps={{ "aria-label": "movie, tv show & person" }}
+        value={searchField}
+        onChange={(e)=>setSearchField(e.target.value)}
       />
       <IconButton
         type="submit"
@@ -53,3 +60,4 @@ export default function SearchBar() {
     </Paper>
   );
 }
+export default connect(null,{submitSearch})(SearchBar);

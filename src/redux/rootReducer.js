@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import movieListReducer from './movie-list/movieListReducer';
+import mediaListReducer from './media-list/mediaListReducer';
 
 
 export default combineReducers({
-    media:movieListReducer
+    media:mediaListReducer
 })

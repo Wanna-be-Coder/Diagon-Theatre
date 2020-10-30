@@ -1,14 +1,15 @@
-import {GET_ERROR,GET_POPULAR,SET_LOADING} from '../types'
+import {GET_ERROR,GET_POPULAR,SET_LOADING,GET_SEARCH_RESULT} from '../types'
 const INITIAL_STATE = {
     popularMovies:[],
     popularTvs:[],
     popularPeople:[],
     trending:[],
     isLoading:false,
+    searchResults:[],
     err:null
 }
 
-const movieListReducer = (state=INITIAL_STATE,action) => {
+const mediaListReducer = (state=INITIAL_STATE,action) => {
     switch(action.type){
         case GET_ERROR:
             console.error(action.payload);
@@ -31,7 +32,13 @@ const movieListReducer = (state=INITIAL_STATE,action) => {
                 return{
                     ...state,
                     isLoading:true
-                }
+                };
+            case GET_SEARCH_RESULT:
+                return{
+                    ...state,
+                    searchResults:action.payload
+
+                };
 
 
         default:
@@ -40,4 +47,4 @@ const movieListReducer = (state=INITIAL_STATE,action) => {
 }
 
 
-export default  movieListReducer;
+export default  mediaListReducer;

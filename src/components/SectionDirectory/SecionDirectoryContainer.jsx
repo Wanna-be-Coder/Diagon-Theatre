@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
-import {getPopulars} from '../../redux/movie-list/movieListAction';
+import {getPopulars} from '../../redux/media-list/mediaListAction';
 import SectionDirectory from '../../components/SectionDirectory/SectionDirectory';
 
 const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
@@ -14,7 +14,7 @@ const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
     return (
      
         <div>
-               {topMedias.loading ? <div>Loading</div> : 
+               {topMedias.isLoading && topMedias.err!==null ? <div>Loading</div> : 
                <div>
 
                <SectionDirectory title='Popular movies'  list={topMedias.popularMovies} />
