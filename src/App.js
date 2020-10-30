@@ -9,11 +9,13 @@ import './App.css';
 function App() {
   return (
     <div>
+
       <Switch>
       <Route exact path='/' component={HomaPage} />
       <Route exact path='/search/:name' component={SearchResultPage} />
       <Route exact path='/detail/:id' component={DetailPage} />
       </Switch>
+      
     </div>
   );
 }
