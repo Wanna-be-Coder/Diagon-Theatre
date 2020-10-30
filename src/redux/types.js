@@ -1,0 +1,4 @@
+export const GET_POPULAR_MOVIES = "GET_POPULAR_MOVIES";
+export const CLEAR_RESULTS = "CLEAR_RESULTS";
+export const SET_LOADING = "SET_LOADING";
+export const GET_ERROR = "GET_ERROR";

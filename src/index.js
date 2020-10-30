@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>  
-    {/* enables React Router In The App  */}
+{/* enables redux */}
+    <Provider store={store}>
+{/* enables React Router In The App  */}
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

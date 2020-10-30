@@ -36,9 +36,9 @@ I will use redux to manage state in this app. I have have choosen the following 
 1. Clean the create-react-app,make the pages and integrate react Router ->15mins
 2. Intergrate Material UI make the Navbar->15mins
 3. Implementing Redux and setting up the API->60mins
-4. Setting up the Section Directory state in redux with the API
-5. Making the Section Directory and Card Component
-6. Combining Section Directory with redux
+4. Setting up the Section Directory state in redux with the API->60mins
+5. Making the Section Directory and Card Component->30mins
+6. Combining Section Directory with redux->15mins
 7. Making search component with redux ->30mins
 8. Making Movie Directory,SideNav and Modifying Card component -> 60mins
 9. Setting up redux for Search Result page -> 30mins
