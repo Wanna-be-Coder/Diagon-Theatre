@@ -1,9 +1,10 @@
-import {GET_ERROR,GET_POPULAR} from '../types'
+import {GET_ERROR,GET_POPULAR,SET_LOADING} from '../types'
 const INITIAL_STATE = {
     popularMovies:[],
     popularTvs:[],
-    popuplarPeople:[],
+    popularPeople:[],
     trending:[],
+    isLoading:false,
     err:null
 }
 
@@ -20,10 +21,17 @@ const movieListReducer = (state=INITIAL_STATE,action) => {
                 ...state,
                 popularMovies:action.payload.movies,
                 popularTvs:action.payload.tvs,
-                popuplarPeople:action.payload.people,
-                trending:action.payload.trending
+                popularPeople:action.payload.people,
+                trending:action.payload.trending,
+                isLoading:false
 
             };
+
+            case SET_LOADING:
+                return{
+                    ...state,
+                    isLoading:true
+                }
 
 
         default:

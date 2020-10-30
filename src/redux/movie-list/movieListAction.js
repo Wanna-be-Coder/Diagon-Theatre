@@ -1,4 +1,4 @@
-import {GET_ERROR,GET_POPULAR} from '../types'
+import {GET_ERROR,GET_POPULAR,SET_LOADING} from '../types'
 import axios from 'axios';
 import {key} from '../../key';
 
@@ -8,8 +8,9 @@ const apiKeyFormatPopular = (videoType,key) =>{
 
 }
 
-export const getPopulars = () => async (dispatch) =>{
+export const getPopulars = () => async dispatch =>{
     try{
+    setLoading();
     const movies = await axios.get(apiKeyFormatPopular('movie',key));
     const tv = await axios.get(apiKeyFormatPopular('tv',key));
     const people = await axios.get(apiKeyFormatPopular('person',key));
@@ -20,13 +21,16 @@ export const getPopulars = () => async (dispatch) =>{
     })
     }
     catch(err){
-        console.log(err);
+
         return dispatch({
           type: GET_ERROR,
           payload: err
         });
     }
 }
+export const setLoading = () => {
+    return { type: SET_LOADING };
+  };
 
 
 
