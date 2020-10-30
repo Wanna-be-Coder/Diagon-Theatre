@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
  
   },
   appBar:{
-    background:purple[500]
+    background:purple[0]
   },
   link:{
       textDecoration:'none',

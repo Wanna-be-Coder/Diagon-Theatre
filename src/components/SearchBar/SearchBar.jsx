@@ -5,7 +5,8 @@ import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import {connect} from 'react-redux';
-import {submitSearch} from '../../redux/media-list/mediaListAction'
+import {submitSearch} from '../../redux/media-list/mediaListAction';
+import {withRouter,Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,14 +32,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SearchBar = ({submitSearch}) => {
+const SearchBar = ({history}) => {
   const classes = useStyles();
   const [searchField,setSearchField] = useState("");
 
 
   const handleSearch = (e) =>{
       e.preventDefault();
-      submitSearch(searchField);
+      if(searchField!==''){
+      history.push(`/search/${searchField}`)
+      }
+      
   }
 
   return (
@@ -60,4 +64,4 @@ const SearchBar = ({submitSearch}) => {
     </Paper>
   );
 }
-export default connect(null,{submitSearch})(SearchBar);
+export default connect(null,{submitSearch})(withRouter(SearchBar));
