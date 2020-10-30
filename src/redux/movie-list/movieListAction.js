@@ -3,7 +3,7 @@ import axios from 'axios';
 import {key} from '../../key';
 
 const apiKeyFormatPopular = (videoType,key) =>{
-
+    //Formated for popular data calls
     return `https://api.themoviedb.org/3/${videoType}/popular?api_key=${key}&language=en-US&page=1`
 
 }

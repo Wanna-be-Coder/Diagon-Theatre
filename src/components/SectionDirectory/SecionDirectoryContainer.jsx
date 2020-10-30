@@ -4,7 +4,9 @@ import {getPopulars} from '../../redux/movie-list/movieListAction';
 import SectionDirectory from '../../components/SectionDirectory/SectionDirectory';
 
 const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
-    useEffect(() => getPopulars()
+    useEffect(() =>
+    //calling all the data for the Home Page
+    getPopulars()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     , [])
@@ -14,10 +16,12 @@ const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
         <div>
                {topMedias.loading ? <div>Loading</div> : 
                <div>
+
                <SectionDirectory title='Popular movies'  list={topMedias.popularMovies} />
                <SectionDirectory title='Popular TV shows'  list={topMedias.popularTvs} />
                <SectionDirectory title='Popular People'  list={topMedias.popularPeople} />
                <SectionDirectory title='Trending Movies'  list={topMedias.popularMovies} />
+               
                </div>
                }
            
