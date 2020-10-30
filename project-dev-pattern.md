@@ -33,7 +33,7 @@ I will use redux to manage state in this app. I have have choosen the following 
 
 ### TimeLine Calculation
 
-1. Make the pages and integrate react Router ->15mins
+1. Clean the create-react-app,make the pages and integrate react Router ->15mins
 2. Intergrate Material UI make the Navbar->15mins
 3. Implementing Redux and setting up the API->60mins
 4. Setting up the Section Directory state in redux with the API
