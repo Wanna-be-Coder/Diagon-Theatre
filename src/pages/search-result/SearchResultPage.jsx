@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchResultContainer from '../../components/search-result-container/SearchResultContainer'
+import SearchResultContainer from '../../components/SearchResultContainer/SearchResultContainer'
 import SearchBar from '../../components/SearchBar/SearchBar'
 
 const SearchResultPage = () => {

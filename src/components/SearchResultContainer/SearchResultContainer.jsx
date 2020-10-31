@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {connect} from 'react-redux';
-import {submitSearch} from '../../redux/media-list/mediaListAction';
+import {submitSearch} from '../../redux/searchItems/searchItemAction';
 import {withRouter} from 'react-router-dom';
 import SearchResultCard from '../SearchResultCard/SearchResultCard';
 
@@ -195,7 +195,7 @@ SearchResultContainer.propTypes = {
    */
   window: PropTypes.func
 };
-const mapStateToProps = ({media}) =>({
-  searchResults:media.searchResults
+const mapStateToProps = ({searchData}) =>({
+  searchResults:searchData.searchResults
 })
 export default connect(mapStateToProps,{submitSearch})(withRouter(SearchResultContainer));

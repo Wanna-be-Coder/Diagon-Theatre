@@ -1,6 +1,8 @@
-import {GET_ERROR,SET_LOADING,GET_DETAILS} from '../types'
+import {GET_ERROR,GET_DETAILS} from '../types'
 import axios from 'axios';
 import {key} from '../../key';
+import {setLoading} from '../utils/util';
+
 
 const apiKeyFormatDisplay = (mediaType,id,key) =>{
     //Formated for popular data calls
@@ -27,6 +29,3 @@ export const getDetails = (mediaType,id) => async dispatch =>{
     }
 }
 
-export const setLoading = () => {
-    return { type: SET_LOADING };
-  };
