@@ -23,7 +23,7 @@ Along with all this there will be three other components which will represent th
 2. Search Result Page Component
 3. Detail Page Component
 
-### Decidig where the states lives
+### Decidig where the states lives initial estimation
 
 I will use redux to manage state in this app. I have have choosen the following conponents as container for this project:
 
@@ -44,4 +44,24 @@ I will use redux to manage state in this app. I have have choosen the following 
 9. Setting up redux for Search Result page -> 30mins
 10. Intergrating redux with Search Page->15mins
 11. Making MovieTitle & Movie Overview Component ->30mins
-12. Making MovieInfo Directory & MovieInfo Component
+12. Making MovieInfo Directory & MovieInfo Component with Redux->45mins
+
+### New Component Added which was not planned
+
+1. 404 page
+2. Search Result Container
+3. Search Result Card
+4. Detail Container
+
+### Components which was not needed
+
+1. MovieInfo Component
+2. MovieInfo Directory Component-> child MovieInfo Component
+3. Movie Overview Component
+4. Movie Title Component
+
+### States present in component
+
+1. SectionDirectoryContainer
+2. SearchResultContainer
+3. DetailPage
