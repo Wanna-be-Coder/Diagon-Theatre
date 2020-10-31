@@ -60,7 +60,7 @@ I will use redux to manage state in this app. I have have choosen the following 
 3. Movie Overview Component
 4. Movie Title Component
 
-### States present in component
+### Final Components with State in it
 
 1. SectionDirectoryContainer
 2. SearchResultContainer
