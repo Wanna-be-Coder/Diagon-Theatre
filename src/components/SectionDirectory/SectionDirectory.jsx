@@ -2,7 +2,7 @@
 import React from 'react';
 import CardItem from '../Card/CardItem';
 
-const SectionDirectory = ({title,list}) => {
+const SectionDirectory = ({title,list,media_type}) => {
     const cardStyle = {
         main:{
             display: 'flex',
@@ -26,7 +26,7 @@ const SectionDirectory = ({title,list}) => {
         <div style={cardStyle.main}>
             <div style={cardStyle.title}>{title}</div>
             <div style={cardStyle.card}>
-            {list.map(list=> <CardItem key={list.id}  data={list}/>)}
+            {list.map(list=> <CardItem key={list.id}  data={list} media_type_section={media_type}/>)}
             </div>
             
         </div>

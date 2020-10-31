@@ -17,10 +17,10 @@ const SecionDirectoryContainer = ({topMedias,getPopulars}) => {
                {topMedias.isLoading && topMedias.err!==null ? <div>Loading</div> : 
                <div>
 
-               <SectionDirectory title='Popular movies'  list={topMedias.popularMovies} />
-               <SectionDirectory title='Popular TV shows'  list={topMedias.popularTvs} />
-               <SectionDirectory title='Popular People'  list={topMedias.popularPeople} />
-               <SectionDirectory title='Trending Movies'  list={topMedias.popularMovies} />
+               <SectionDirectory title='Popular movies'  list={topMedias.popularMovies} media_type='movie' />
+               <SectionDirectory title='Popular TV shows'  list={topMedias.popularTvs} media_type='tv'/>
+               <SectionDirectory title='Popular People'  list={topMedias.popularPeople} media_type='person' />
+               <SectionDirectory title='Trending Movies'  list={topMedias.trending} />
                
                </div>
                }

@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import { red } from "@material-ui/core/colors";
 import Avatar from "@material-ui/core/Avatar";
 import './card.styles.scss';
+import {withRouter} from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
 
@@ -26,13 +27,18 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function CardItem({data}) {
+const CardItem = ({data,history,media_type_section}) => {
   let classes = useStyles();
+
+  const handleRedirect = (media_type,id) => {
+    media_type_section ?  history.push(`/detail/${media_type_section}/${id}`) :
+    history.push(`/detail/${media_type}/${id}`)
+  }
 
   const imageSelector = data.profile_path ? { backgroundImage: `url(http://image.tmdb.org/t/p/w220_and_h330_face/${data.profile_path})`} : { backgroundImage: `url(http://image.tmdb.org/t/p/w220_and_h330_face/${data.poster_path})`};
   const ratingSelector = data.profile_path ? `${data.popularity.toString().substr(0,2)}pt` :  ` ${data.vote_average*10}﹪`;
   return (<>
-    <Card className="card-item" style={imageSelector}>
+    <Card className="card-item" style={imageSelector} onClick={()=>handleRedirect(data.media_type,data.id)}>
    
       <Avatar alt="rating" className={classes.avatar}>
         {ratingSelector}
@@ -43,3 +49,4 @@ export default function CardItem({data}) {
     </>
   );
 }
+export default withRouter(CardItem);

@@ -15,7 +15,7 @@ function App() {
       <Switch>
       <Route exact path='/' component={HomaPage} />
       <Route exact path='/search/:name' component={SearchResultPage} />
-      <Route exact path='/detail/:id' component={DetailPage} />
+      <Route exact path='/detail/:media/:id' component={DetailPage} />
       <Route component={Error404} />
       </Switch>
 
