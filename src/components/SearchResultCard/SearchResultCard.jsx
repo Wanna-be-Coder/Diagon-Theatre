@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-
 import Typography from "@material-ui/core/Typography";
+import {withRouter} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,10 +36,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchResultCard({poster_path,title,release_date,overview,media_type,profile_path,known_for_department,name}) {
+ const SearchResultCard = ({id,poster_path,title,release_date,overview,media_type,profile_path,known_for_department,name,history}) => {
   const classes = useStyles();
+  const handleRedirect = (media_type,id) => {
+    history.push(`/detail/${media_type}/${id}`)
+  }
  if(media_type==='person') return (
-    <Card className={classes.root} onClick={()=>console.log('clicked')}>
+    <Card className={classes.root}  onClick={()=>handleRedirect(media_type,id)}>
     <CardMedia
       className={classes.cover}
       image={profile_path===null? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png':`http://image.tmdb.org/t/p/w220_and_h330_face/${profile_path}`}
@@ -59,7 +62,7 @@ export default function SearchResultCard({poster_path,title,release_date,overvie
   </Card>
  )
   return (
-    <Card className={classes.root} onClick={()=>console.log('clicked')}>
+    <Card className={classes.root} onClick={()=>handleRedirect(media_type,id)}>
       <CardMedia
         className={classes.cover}
         image={`http://image.tmdb.org/t/p/w220_and_h330_face/${poster_path}`}
@@ -81,3 +84,4 @@ export default function SearchResultCard({poster_path,title,release_date,overvie
     </Card>
   );
 }
+export default withRouter(SearchResultCard);

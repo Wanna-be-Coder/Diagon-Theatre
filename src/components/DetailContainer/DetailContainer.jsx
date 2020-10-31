@@ -1,8 +1,8 @@
 import React from 'react'
-import SectionDirectory from '../SectionDirectory/SectionDirectory';
+
 
 const DetailContainer = ({detail}) => {
-    if(detail.known_for_department) return(   <div>
+    if(detail.known_for_department===null || detail.known_for_department) return(   <div>
         <h1 style={{fontSize:'50px'}}>{detail.name}</h1>
     <h2 style={{fontSize:'35px'}}> Birth Date: {detail.birthday ? detail.birthday : ''}</h2>
         <h3 style={{fontSize:'35px'}}>Occupation:  {detail.known_for_department}</h3>
