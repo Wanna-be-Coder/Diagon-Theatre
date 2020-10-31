@@ -5,7 +5,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import SearchBar from '../SearchBar/SearchBar'
+
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {connect} from 'react-redux';
@@ -45,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    marginTop: '48px'
+    height:200,
+    marginTop: '100px'
     
   },
 
@@ -172,8 +173,8 @@ if(text==='People') setshowSearchof ('person')
       </nav>
      
       <main className={classes.content}>
-        {/* <div className={classes.toolbar} /> */}
-        <SearchBar />
+        
+     
         {filterSearch.length !==0 ?
         filterSearch.map(data=>  <div style={{marginTop:'15px'}}>
         <SearchResultCard {...data}/>
