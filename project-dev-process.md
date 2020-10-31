@@ -65,3 +65,7 @@ I will use redux to manage state in this app. I have have choosen the following 
 1. SectionDirectoryContainer
 2. SearchResultContainer
 3. DetailPage
+
+### Time extended on tasks
+
+4. Setting up the Section Directory state in redux with the API ->Got side tracked and added 5,6 to some extent while doing it
