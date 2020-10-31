@@ -22,7 +22,8 @@ const mediaListReducer = (state=INITIAL_STATE,action) => {
             case GET_SEARCH_RESULT:
                 return{
                     ...state,
-                    searchResults:action.payload
+                    searchResults:action.payload,
+                    isLoading:false
 
                 };
 

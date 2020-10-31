@@ -17,7 +17,8 @@ const displayItemReducer = (state=INITIAL_STATE,action) => {
             case GET_DETAILS:
                 return{
                     ...state,
-                    displayItem:action.payload
+                    displayItem:action.payload,
+                    isLoading:false
                 }
    
             case SET_LOADING:
