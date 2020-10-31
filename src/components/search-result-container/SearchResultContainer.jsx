@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Drawer from "@material-ui/core/Drawer";
@@ -6,7 +6,7 @@ import Hidden from "@material-ui/core/Hidden";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import SearchBar from '../SearchBar/SearchBar'
-import Typography from "@material-ui/core/Typography";
+
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {connect} from 'react-redux';
 import {submitSearch} from '../../redux/media-list/mediaListAction';
@@ -62,32 +62,63 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchResultContainer(props) {
   const { window,submitSearch,match,searchResults } = props;
+  // let movies =0, tvshows=0, people = 0;
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [showSearchOf,setshowSearchof]  = useState('movie');
+  const [numOfCategoris,setNumOfCategoris] = useState([]);
 
   useEffect(()=>{
     // Get Search result via params
     submitSearch(match.params.name);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[match.params.name])
+
+  },[match.params.name, submitSearch])
+
+  useEffect(()=>{
+    // eslint-disable-next-line array-callback-return
+    getNumberOfMedia(searchResults);
+  },[searchResults])
+
+  const getNumberOfMedia = async (searchResults) =>{
+    let movies = 0;
+    let tvs = 0;
+    let person = 0;
+  // eslint-disable-next-line array-callback-return
+  await searchResults.map((searchResult) => {
+    if(searchResult.media_type==='movie') movies += 1;
+    if(searchResult.media_type==='tv') tvs += 1;
+    if(searchResult.media_type==='person') person += 1;
+  }
+  );
+  console.log(movies,tvs,person)
+  setNumOfCategoris([movies,tvs,person])
+  
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawer = (
+  const handleCategoryChange = (text) =>{
+//For Filtering the search category functionality
+if(text==='Movies') setshowSearchof('movie');
+if(text==='TV Shows') setshowSearchof ('tv')
+if(text==='People') setshowSearchof ('person')
+  }
+
+  const drawer = (arr) => (
     <div>
       <List>
         {["Movies", "TV Shows", "People"].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={()=>handleCategoryChange(text)}>
             <ListItem>
      
             <div >{text}</div>
          
             </ListItem>
             {/* <ListItemText className={classes.results} primary={index} /> */}
-            <div className={classes.results}>{index}</div>
+            <div className={classes.results}>{arr && arr[index]}</div>
           </ListItem>
         ))}
       </List>
@@ -97,8 +128,9 @@ function SearchResultContainer(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
     console.log(searchResults);
 
+ //Filtering The card according yo the state
     const filterSearch = searchResults.filter((searchResult) =>
-    searchResult.media_type==='movie'
+    searchResult.media_type===showSearchOf
   );
   console.log(filterSearch)
   return (
@@ -122,7 +154,7 @@ function SearchResultContainer(props) {
               keepMounted: true // Better open performance on mobile.
             }}
           >
-            {drawer}
+            {drawer()}
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -134,7 +166,7 @@ function SearchResultContainer(props) {
             variant="permanent"
             open
           >
-            {drawer}
+            {drawer(numOfCategoris)}
           </Drawer>
         </Hidden>
       </nav>

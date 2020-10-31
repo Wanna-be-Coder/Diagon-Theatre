@@ -36,11 +36,30 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchResultCard({poster_path,title,release_date,overview}) {
+export default function SearchResultCard({poster_path,title,release_date,overview,media_type,profile_path,known_for_department,name}) {
   const classes = useStyles();
-
+ if(media_type==='person') return (
+    <Card className={classes.root} onClick={()=>console.log('clicked')}>
+    <CardMedia
+      className={classes.cover}
+      image={profile_path===null? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png':`http://image.tmdb.org/t/p/w220_and_h330_face/${profile_path}`}
+      title={title}
+    />
+    <div className={classes.details}>
+      <CardContent className={classes.content}>
+        <Typography component="h5" variant="h5">
+          {name}
+        </Typography>
+        <Typography variant="subtitle1" color="textSecondary">
+         {known_for_department}
+        </Typography>
+   
+      </CardContent>
+    </div>
+  </Card>
+ )
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={()=>console.log('clicked')}>
       <CardMedia
         className={classes.cover}
         image={`http://image.tmdb.org/t/p/w220_and_h330_face/${poster_path}`}
@@ -54,8 +73,8 @@ export default function SearchResultCard({poster_path,title,release_date,overvie
           <Typography variant="subtitle1" color="textSecondary">
            {release_date}
           </Typography>
-          <Typography variant="h6" color="textPrimary">
-          {overview}
+          <Typography  color="textPrimary">
+          {overview.substring(0,200)}....
           </Typography>
         </CardContent>
       </div>
