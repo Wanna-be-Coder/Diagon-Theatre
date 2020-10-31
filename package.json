@@ -1,6 +1,5 @@
 {
   "name": "diagon-theatre",
-  "homepage": "http://wanna-be-coder.github.io/Diagon-Theatre",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,6 +21,7 @@
     "redux-thunk": "^2.3.0",
     "web-vitals": "^0.2.4"
   },
+  "homepage": "http://wanna-be-coder.github.io/Diagon-Theatre",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

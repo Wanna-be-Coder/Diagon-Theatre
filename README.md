@@ -2,6 +2,10 @@
 
 This project lets you browse movies, tv shows and people based on user search criteria using the tmdb api. It uses redux to manage the states & Material UI for stlying.
 
+### Installation Process
+
+To run the installation use npm i.
+
 ### To run the project use npm start
 
 Runs the app in the development mode.
