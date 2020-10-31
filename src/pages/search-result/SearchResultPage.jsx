@@ -1,9 +1,10 @@
 import React from 'react'
+import SearchResultContainer from '../../components/search-result-container/SearchResultContainer'
 
 const SearchResultPage = () => {
     return (
         <div>
-            Searcg Result Page
+            <SearchResultContainer />
         </div>
     )
 }

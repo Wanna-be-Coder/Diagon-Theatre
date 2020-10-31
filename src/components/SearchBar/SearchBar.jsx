@@ -4,9 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import {connect} from 'react-redux';
-import {submitSearch} from '../../redux/media-list/mediaListAction';
-import {withRouter,Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SearchBar = ({history}) => {
+const SearchBar = ({history,location}) => {
   const classes = useStyles();
   const [searchField,setSearchField] = useState("");
 
@@ -44,9 +42,11 @@ const SearchBar = ({history}) => {
       }
       
   }
+  console.log(location);
+const pageDirectory = location.pathname !== '/' ? {marginTop:0,width:'100%'} : {};
 
   return (
-    <Paper component="form" onSubmit={handleSearch} className={classes.root}>
+    <Paper component="form" onSubmit={handleSearch} className={classes.root}  style={{...pageDirectory}} >
       <InputBase
         className={classes.input}
         placeholder="Search for a movie, tv show, person......"
@@ -64,4 +64,4 @@ const SearchBar = ({history}) => {
     </Paper>
   );
 }
-export default connect(null,{submitSearch})(withRouter(SearchBar));
+export default withRouter(SearchBar);
