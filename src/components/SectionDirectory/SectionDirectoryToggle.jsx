@@ -43,15 +43,11 @@ const SectionDirectory = ({ title, list1, list2, media_type, toggleName }) => {
               <CardItem
                 key={list.id}
                 data={list}
-                media_type_section={media_type}
+                media_type_section={"movie"}
               />
             ))
           : list2.map((list) => (
-              <CardItem
-                key={list.id}
-                data={list}
-                media_type_section={media_type}
-              />
+              <CardItem key={list.id} data={list} media_type_section={"tv"} />
             ))}
       </div>
     </div>
